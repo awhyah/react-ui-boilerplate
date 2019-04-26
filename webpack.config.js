@@ -11,6 +11,12 @@ module.exports = {
       },
       {
         test: /\.less$/,
+        include: /assets/,
+        use: ['style-loader', 'css-loader', 'postcss-loader', 'less-loader'],
+      },
+      {
+        test: /\.less$/,
+        exclude: /assets/,
         use: [
           'style-loader',
           {

@@ -4,37 +4,36 @@ import React, {
 
 import styles from './Inscription.less';
 
-const PRINT_INTERVAL = 150;
-
 export default function Inscription() {
   const [quote, setQuote] = useState('viam supervadet vadens');
+  const printingInterval = 150;
 
   useEffect(() => {
     const charArray = quote.split('');
     const accumulatedChars = [];
     let depth = Math.round(Math.random() * 10 + 1);
-    let action = 'deleting';
+    let action = 'DELETING';
 
     setInterval(() => {
-      if (action === 'deleting') {
+      if (action === 'DELETING') {
         const char = charArray.pop();
         accumulatedChars.push(char);
         depth -= 1;
 
         if (depth === 0) {
-          action = 'typing';
+          action = 'TYPING';
         }
-      } else if (action === 'typing') {
+      } else if (action === 'TYPING') {
         charArray.push(accumulatedChars.pop());
 
         if (!accumulatedChars.length) {
           depth = Math.round(Math.random() * 10) + 1;
-          action = 'deleting';
+          action = 'DELETING';
         }
       }
 
       setQuote(charArray.join(''));
-    }, PRINT_INTERVAL);
+    }, printingInterval);
   }, []);
 
   return (
