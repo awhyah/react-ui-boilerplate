@@ -1,13 +1,14 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import createStore from './store';
+import configureStore from '../store/configureStore.js';
+import Inscription from './Inscription.jsx';
 
-const store = createStore();
+const store = configureStore();
 
 function App() {
   return (
     <Provider store={store}>
-      <span>viam supervadet vadens</span>
+      <Inscription />
     </Provider>
   );
 }
